@@ -1,64 +1,33 @@
-import { View, Text, Image, StyleSheet, SafeAreaView, ScrollView } from "react-native";
-import { useRouter } from "expo-router";
+import { View, Text, Image, StyleSheet } from "react-native";
 import CustomButton from "../components/CustomButton";
 
 export default function HomeScreen() {
-  const router = useRouter();
-
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollContainer}>
-        {/* Imagen de portada */}
-        <Image 
-         source={require("../assets/images/papas.png")}
+    <View style={styles.container}>
+      <Text style={styles.title}>Inicio</Text>
+      
+      <Image 
+  source={require("../assets/images/papas.png")}
 
-          style={styles.image}
-          resizeMode="cover"
-        />
+  style={styles.image} 
+/>
 
-        {/* Texto de bienvenida */}
-        <Text style={styles.title}>
-          Bienvenido a Clasificación de Papa
-        </Text>
-        <Text style={styles.subtitle}>
-          Tu herramienta ideal para contar y clasificar papas. ¡Vamos a empezar!
-        </Text>
-
-        {/* Botones */}
-        <CustomButton title="Ir a Login" onPress={() => router.push("/login")} />
-        <CustomButton title="Ir a Registro" onPress={() => router.push("/register")} />
-        <CustomButton title="Olvidé mi contraseña" onPress={() => router.push("/forgot-password")} />
-      </ScrollView>
-    </SafeAreaView>
+      
+      <Text style={styles.subtitle}>Clasificación de Papas</Text>
+      
+      <View style={styles.buttonContainer}>
+        <CustomButton title="Pequeñas" onPress={() => console.log("Pequeñas")} />
+        <CustomButton title="Medianas" onPress={() => console.log("Medianas")} />
+        <CustomButton title="Grandes" onPress={() => console.log("Grandes")} />
+      </View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#f9f9f9",
-  },
-  scrollContainer: {
-    alignItems: "center",
-    padding: 20,
-  },
-  image: {
-    width: "100%",
-    height: 250,
-    borderRadius: 10,
-    marginBottom: 20,
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: "bold",
-    color: "#333",
-    textAlign: "center",
-    marginBottom: 10,
-  },
-  subtitle: {
-    fontSize: 18,
-    color: "#555",
-    textAlign: "center",
-    marginBottom: 20,
-  },
+  container: { flex: 1, alignItems: "center", justifyContent: "center" },
+  title: { fontSize: 24, fontWeight: "bold" },
+  subtitle: { fontSize: 18, marginVertical: 10 },
+  image: { width: "90%", height: 150, marginVertical: 10 },
+  buttonContainer: { flexDirection: "row", justifyContent: "space-around", width: "100%" },
 });

@@ -1,12 +1,18 @@
-import { Tabs } from "expo-router";
-import { View, Text } from "react-native";
+import { createStackNavigator } from "@react-navigation/stack";
+import HomeScreen from "./home";
+import LoginScreen from "./login";
+import RegisterScreen from "./register";
+import IndexScreen from "./index";
 
-export default function TabLayout() {
+const Stack = createStackNavigator();
+
+export default function Layout() {
   return (
-    <Tabs>
-      <Tabs.Screen name="home" options={{ title: "Inicio" }} />
-      <Tabs.Screen name="login" options={{ title: "Login" }} />
-      <Tabs.Screen name="register" options={{ title: "Registro" }} />
-    </Tabs>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="home" component={HomeScreen} />
+      <Stack.Screen name="login" component={LoginScreen} />
+      <Stack.Screen name="register" component={RegisterScreen} />
+      <Stack.Screen name="index" component={IndexScreen} />
+    </Stack.Navigator>
   );
 }
